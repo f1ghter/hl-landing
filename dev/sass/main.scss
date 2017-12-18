@@ -1,5 +1,6 @@
 @import "variables";
 @import "general";
+@import "smart-grid";
 
 body {
   font-family: "Roboto", arial, sans-serif;
@@ -110,6 +111,7 @@ body {
 // about section
 .about {
   // position: relative;
+
   display: flex;
   align-items: center;
   height: 100vh;
@@ -230,6 +232,7 @@ body {
     padding-right: 30px;
     font-weight: 900;
     margin-bottom: 250px; //TODO: remove
+    pointer-events: none;
   }
 
   &-slider {
@@ -238,15 +241,51 @@ body {
 
     &__item {
       flex-basis: 20%;
+      text-align: center;
     }
     &__img {
       // width: 100%;
+      margin-left: auto;
+      margin-right: auto;
       width: 260px;
       height: 260px;
       object-fit: cover;
       border-radius: 50%;
     }
   }
+}
+.slick-list {
+  padding: 210px 50px !important;
+  border: 1px solid red;
+}
+.slick-slide {
+  width: 260px;
+  transition: all 1s;
+  position: relative;
+  display: none;
+  opacity: .5;
+
+  background-size: border-box;
+  border: 1px solid red;
+}
+.services-slider__item.slick-active {
+  display: block;
+  border: 1px solid red;
+  // transform: scale(1.5);
+}
+.services-slider__item--prev {
+  // background-color: green;
+  transform: scale(1.5);
+}
+.services-slider__item--next {
+  // background-color: green;
+  transform: scale(1.5);
+}
+.slick-current {
+  opacity: 1;
+  transform: scale(2.57) translateZ(10px);
+  z-index: 5;
+
 }
 // eof services section
 
@@ -273,3 +312,15 @@ body {
 
 
 
+.test {
+  @include row-flex();
+  @include wrapper();
+
+  &-item {
+    @include col();
+    @include size(1);
+    // @include debug(red,green);
+    border: 1px solid blue;
+    height: 200px;
+  }
+}
