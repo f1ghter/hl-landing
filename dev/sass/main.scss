@@ -8,8 +8,7 @@ body {
   color: #fff;
   background-color: #202126;
   box-sizing: border-box;
-  overflow-x: hidden;
-
+  // overflow-x: hidden;
 }
 
 // hero section
@@ -21,6 +20,10 @@ body {
   background-image: url(/img/bg-hero.jpg);
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+  @include mobile {
+    background-position: 59% 22%;
+  }
 
   &:after {
     display: block;
@@ -44,6 +47,10 @@ body {
   margin-right: 30px;
   position: relative;
   z-index: 2;
+  @include tablet {
+    margin-top: 20px;
+    margin-right: 0;
+  }
 }
 
 .logo {
@@ -77,6 +84,12 @@ body {
       background-image: url(../img/bg-hero-paint.svg);
       background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
+      @include mobile {
+        width: 100%;
+        padding-bottom: 10px;
+        background-size: 150% 107%;
+      }
     }
   }
 }
@@ -155,6 +168,10 @@ body {
 .advantages {
   width: 390px;
   margin-left: 160px;
+  @include mobile {
+    @include size(12);
+    margin-left: 0;
+  }
   // margin-top: 360px;
   &--wide {
     width: 100%;
@@ -247,6 +264,9 @@ body {
   .advantages {
     @include col();
     @include size(6);
+    @include mobile {
+      @include size(12);
+    }
   }
 }
 .about-circles {
@@ -273,6 +293,9 @@ body {
     // padding-right: 30px;
     font-weight: 900;
     pointer-events: none;
+    @include mobile {
+      font-size: 48px;
+    }
   }
 
   &-slider {
@@ -303,6 +326,11 @@ body {
   position: relative;
   display: none;
   opacity: .5;
+  @include mobile {
+    // opacity: 0;
+    // width: 100vw !important;
+    // width: 100% !important;
+  }
 
   background-size: border-box;
   // border: 1px solid red;
@@ -315,15 +343,27 @@ body {
 .services-slider__item--prev {
   // background-color: green;
   transform: scale(1.5) translateX(-80px);
+
+  @include mobile {
+    transform: none;
+  }
 }
 .services-slider__item--next {
   // background-color: green;
   transform: scale(1.5) translateX(80px);
+
+  @include mobile {
+    transform: none;
+  }
 }
 .slick-current {
   opacity: 1;
   transform: scale(2.57) translateZ(10px);
   z-index: 5;
+
+  @include mobile {
+    transform: none;
+  }
 
 }
 // eof services section
@@ -339,13 +379,17 @@ body {
     text-align: right;
     // padding-right: 30px;
     font-weight: 900;
+    @include mobile {
+      font-size: 48px;
+      padding-left: 50px;
+    }
   }
 }
 .gallery-slider {
   @include row-flex();
   @include wrapper();
   align-items: stretch;
-  height: 45vh;
+  height: 45vw;
 
   &__item {
     @include col();
@@ -412,11 +456,24 @@ body {
   @include wrapper();
   padding-top: 400px;
 
+  @include mobile {
+    padding-top: 150px;
+    width: 100%;
+    padding: 0;
+  }
+
   &-credits {
     @include col();
     @include size(3);
     @include shift-left(1);
 
+    @include mobile {
+      @include size(12);
+      @include shift-left(0);
+      padding-left: 10px;
+      padding-right: 10px;
+      // text-align: center;
+    }
     a {
       color: inherit;
       text-decoration: none;
@@ -429,6 +486,11 @@ body {
     position: relative;
     display: inline-block;
     animation: rotate 12s infinite linear;
+    @include mobile {
+      display: none;
+      animation: none;
+    }
+
     &:after {
       content: "";
       position: absolute;
@@ -448,7 +510,6 @@ body {
     padding-bottom: 30px;
 
     p {
-      // margin: 0;
       margin-top: 10px;
       margin-bottom: 20px;
     }
@@ -462,6 +523,11 @@ body {
   &-social {
     margin: 30px 0;
     display: flex;
+
+    @include mobile {
+      // justify-content: center;
+    }
+
     &__item {
       width: 35px;
       height: 35px;
@@ -489,6 +555,11 @@ body {
 .map-wrapper {
   @include col();
   @include size(8);
+
+  @include mobile {
+    @include size(12);
+    height: 250px;
+  }
 }
 #map {
   width: 102%;
@@ -506,25 +577,33 @@ body {
   width: 100vw;
   height: 100vh;
   display: none;
+  z-index: 10;
 
   &__dim {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.55);
     cursor: pointer;
+    opacity: 0;
+    transition: all 2s;
   }
   &__body {
     position: absolute;
-    padding: 64px 174px;
+    padding: 64px 194px;
     max-width: 750px;
     box-sizing: border-box;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #000;
+    background-color: #202126;
     border-radius: 3px;
     border: 6px solid #FFC50B;
     text-align: center;
+    transition: all 2s;
+    @include mobile {
+      width: 100vw;
+      padding: 30px 60px;
+    }
   }
   &__heading {
     font-size: 36px;
@@ -536,6 +615,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 40px;
+    overflow: hidden;
 
     input[type="text"] {
       font-family: inherit;
@@ -550,35 +630,87 @@ body {
     }
     .btn {
       margin-top: 60px;
+      @include mobile {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
   }
 
-  &--viisible {
+  
+}
+.popup-animate {
+  opacity: 0;
+  transform: translateY(70px);
+}
+.popup.popup--visible {
     display: block;
+
+    .popup__dim {
+      animation: fadeIn 1s;
+      animation-fill-mode: forwards;
+    }
+    .popup__body {
+      animation: revealCenter .6s;
+    }
+
+    .popup-animate {
+      animation: reveal 1s;
+      animation-fill-mode: forwards;
+    }
+    .popup-animate-1 {
+      animation-delay: .1s;
+    }
+    .popup-animate-2 {
+      animation-delay: .2s;
+    }
+    .popup-animate-3 {
+      animation-delay: .3s;
+    }
+    .popup-animate-4 {
+      animation-delay: .4s;
+    }
+    .popup-animate-5 {
+      animation-delay: .5s;
+    }
   }
-}
 
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
+// animations
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
-  100% {
-    transform: rotate(360deg);
+
+  @keyframes reveal {
+    0% {
+      transform: translateY(70px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
   }
-}
-
-
-
-.test {
-  @include row-flex();
-  @include wrapper();
-
-  &-item {
-    @include col();
-    @include size(1);
-    // @include debug(red,green);
-    border: 1px solid blue;
-    height: 200px;
+  @keyframes revealCenter {
+    0% {
+      transform: translate(-50%, -35%);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
   }
-}
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+// eof animations

@@ -1,3 +1,29 @@
+// media query mixin
+  $mobile-width: 320px;
+  $tablet-width: 768px;
+  $desktop-width: 1024px;
+
+  @mixin mobile { // 767 - 320
+    @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}){
+      @content;
+    }
+  }
+
+  @mixin tablet {  // 1023 - 768
+    // @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}){
+      @media (max-width: #{$desktop-width - 1px}){
+      @content;
+    }
+  }
+
+  @mixin desktop {  // * - 1024
+    @media (min-width: #{$desktop-width}) {
+      @content;
+    }
+  }
+// eof media query mixin
+
+
 body {
   font-size: $fz-main;
   font-family: $ff-main;

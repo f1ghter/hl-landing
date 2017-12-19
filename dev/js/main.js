@@ -8,12 +8,27 @@ $(document).ready(function(){
     slidesToShow: 5,
     slidesToScroll: 1,
     centerMode: true,
-    autoplay: true,
-    // autoplay: false,
+    // autoplay: true,
+    autoplay: false,
     draggable: false,
     autoplaySpeed: 4000,
     cssEase: 'ease-in-out',
-    variableWidth: false
+    respondTo: 'min',
+    // mobileFirst: true,
+    // variableWidth: false,
+    responsive: [
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          draggable: false,
+          centerMode: false
+        }
+      }
+    ]
   });
 
   $('.services-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
@@ -27,8 +42,24 @@ $(document).ready(function(){
 
 
 
-    // google maps footer
-  //TODO: remove comments
+
+
+  $(".js-btn-popup").click(function(){
+    $(".popup").addClass("popup--visible");
+    console.log("btn click");
+  });
+
+  $(".popup__dim").click(function(){
+    $(this).parents(".popup").removeClass("popup--visible");
+  });
+
+
+
+
+
+
+
+  // map init
   google.maps.event.addDomListener(window, 'load', init);
     function init() {
       // Basic options for a simple Google Map
@@ -322,10 +353,12 @@ $(document).ready(function(){
         // animation: google.maps.Animation.DROP, // appear animation
         title: 'Hammer legend'
       });
-    } // eof maps
-
-    $(".js-btn-popup").click(function(){
-      $(".popup").addClass("popup--visible");
-    })
+    } // eof map init
 }); //eof doc.ready
+
+
+
+
+
+
 
