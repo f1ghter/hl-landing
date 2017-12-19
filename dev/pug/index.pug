@@ -13,6 +13,8 @@ html(lang="ru")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css")
     link(href="css/main.css", rel="stylesheet")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js")
+    script.
+      new WOW().init();
 
   body
     section.hero
@@ -24,85 +26,116 @@ html(lang="ru")
           .activity__text С 15 по 30 декабря
           .activity__text--badge Успей купить клубную карту со скидкой 50%
           .activity__text Плати меньше – получай больше!
-          button.btn заказать
+          button.btn.js-btn-popup заказать
           
     section.about
+
       //- .about__bg
       .about-inner
         .advantages
-          .advantages__item
+          .advantages__item.wow.fadeInUp(data-wow-delay="0s")
             .advantages__heading Удобное расположение 
             .advantages__text На левом берегу столицы, к нам удобно добираться, удобные транспортные пути, крытый паркинг
-          .advantages__item
+          .advantages__item.wow.fadeInUp
             .advantages__heading Высокотехнологичное  оборудование
             .advantages__text Тренажеры премиум-класса от мировых производителей Hammer Strength и Life Fitness обеспечат высокоэффективные занятия любому пользователю – от профессионального спортсмена до обычного клиента тренировочного центра.
-          .advantages__item
+          .advantages__item.wow.fadeInUp
             .advantages__heading Сертифицированная команда тренеров
             .advantages__text Каждое Ваше движение под контролем опытных тренеров. Они составляют уникальные программы занятий, учитывая состояние вашего здоровья, цели и опыт тренировок. 
         .about-g
-          .about-g__item
+          .about-g__item.wow.fadeInUp(data-wow-delay="0.5s")
             img(src="/img/c-about-img-1.png", alt="").about-g__img
-          .about-g__item
+          .about-g__item.wow.fadeInUp(data-wow-delay="0.7s")
             img(src="/img/c-about-img-2.png", alt="").about-g__img
-          .about-g__item
+          .about-g__item.wow.fadeInUp(data-wow-delay="0.9s")
             img(src="/img/c-about-img-3.jpg", alt="").about-g__img
 
     section.about-2
-      .advantages.advantages--wide
-          .advantages__item
-            .advantages__heading Высокая пропускная способность клуба
-            .advantages__text Забудьте о том, что такое теснота и скованность. Клуб Hammer Legend вмещает в себя 300-500 человек в час. В наших больших раздевалках, кардиозоне и зале тренажеров вы будете чувствовать себя комфортно.
-          .advantages__item
-            .advantages__heading Система мониторинга сердечного ритма MYZONE
-            .advantages__text MYZONE - система мониторинга, позволяющая следить за здоровьем, отслеживать результаты физической активности и получать мотивацию для достижения поставленных фитнес-целей.
-          .advantages__item
-            .advantages__heading Официальный тренировочный центр Hammer Strenght
-            .advantages__text Наш фитнес- клуб соответствует международным требованиям Hammer Strength по количеству и подбору силового оборудования к центру для профессиональной спортивной подготовки. В нашем клубе клиенты тренируются на высочайшем профессиональном уровне - так, как тренируются чемпионы!
-          .advantages__item
-            .advantages__heading Outdoor программы на свежем воздухе
-            .advantages__text Функциональные тренировки на свежем воздухе Outdoor Fitness, на которых наши инструкторы помогут Вам освоить новые виды активности или усовершенствовать уже имеющиеся навыки, а также развить физические качества Вашего организма: силу, выносливость, скорость, ловкость и гибкость.
+
+      .about-title
+        img(src="/img/hammer-legend.svg", alt="")
+      .about-2-inner
+        .about-circles circles
+        .advantages.advantages--wide
+            .advantages__item
+              .advantages__heading Высокая пропускная способность клуба
+              .advantages__text Забудьте о том, что такое теснота и скованность. Клуб Hammer Legend вмещает в себя 300-500 человек в час. В наших больших раздевалках, кардиозоне и зале тренажеров вы будете чувствовать себя комфортно.
+            .advantages__item
+              .advantages__heading Система мониторинга сердечного ритма MYZONE
+              .advantages__text MYZONE - система мониторинга, позволяющая следить за здоровьем, отслеживать результаты физической активности и получать мотивацию для достижения поставленных фитнес-целей.
+            .advantages__item
+              .advantages__heading Официальный тренировочный центр Hammer Strenght
+              .advantages__text Наш фитнес- клуб соответствует международным требованиям Hammer Strength по количеству и подбору силового оборудования к центру для профессиональной спортивной подготовки. В нашем клубе клиенты тренируются на высочайшем профессиональном уровне - так, как тренируются чемпионы!
+            .advantages__item
+              .advantages__heading Outdoor программы на свежем воздухе
+              .advantages__text Функциональные тренировки на свежем воздухе Outdoor Fitness, на которых наши инструкторы помогут Вам освоить новые виды активности или усовершенствовать уже имеющиеся навыки, а также развить физические качества Вашего организма: силу, выносливость, скорость, ловкость и гибкость.
 
     section.services
       .services__title Услуги
       p Тренировочные залы 
       .services-slider
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
-          img(src="/img/c-services-1.png", alt="").services-slider__img
+          img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
 
     section.gallery
       .gallery__title Галлерея HAMMER legend
+      .gallery-slider
+        .gallery-slider__item.gallery-slider__item--double
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+        .gallery-slider__item
+           .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+        .gallery-slider__item.gallery-slider__item--double
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+
 
     footer.footer
       .footer-credits
-        .footer-logo
+        .footer__logo
           img(src="/img/logo-footer.svg", alt="")
         .footer__contacts
-          p Телефон:
+          p.footer__heading Телефон:
           p +77075287070
-          p Адрес:
+          p.footer__heading Адрес:
           p Туркестан 10, ЖК «Коркем 2» Астана
-          p Сделано в UCT
-      #map
+          .footer-social
+            a(href="#").footer-social__item.footer-social__item--fb
+            a(href="#").footer-social__item.footer-social__item--g
+            a(href="#").footer-social__item.footer-social__item--i
+          a(href="https://uct.ua" target="_blank") Сделано в UCT
+      .map-wrapper
+        #map
     section.test
       .test-item
       .test-item
@@ -116,8 +149,19 @@ html(lang="ru")
       .test-item
       .test-item
       .test-item
+    .popup
+      .popup__dim
+      .popup__body
+        .popup__heading Благодарим
+        .popup__text Укажите ваш номер для уточнения заказа с менеджером.
+        form.popup-form(action="#")
+          input(type="text", placeholder="Ваше имя")
+          input(type="text", placeholder="+7__")
+          button.btn отправить
 
 
+
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD44fLa7d5vR5XVpEal1HHt97Xb3i6bd6Y") 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js")
     script(src="/js/main.js")
