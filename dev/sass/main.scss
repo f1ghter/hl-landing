@@ -141,6 +141,10 @@ body {
   background-size: cover;
   border: 1px solid red;
 
+  @include tablet {
+    height: auto;
+  }
+
   &__bg {
     position: absolute;
     top: 0;
@@ -159,17 +163,30 @@ body {
 
   &-inner {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    @include row-flex();
+    @include wrapper();
   }
 }
 
 .advantages {
-  width: 390px;
-  margin-left: 160px;
+  @include col();
+  @include size(5);
+  @include shift-left(1);
+
+  // width: 390px;
+  // margin-left: 160px;
+  padding-right: 6%;
+  @include tablet {
+    @include size(10);
+    padding-right: 0;
+    padding-bottom: 50px;
+  }
   @include mobile {
     @include size(12);
+    @include shift-left(0);
     margin-left: 0;
   }
   // margin-top: 360px;
@@ -197,40 +214,78 @@ body {
 
 .about-g {
   display: flex;
-  margin-right: 180px;
+  @include col();
+  @include size(6);
+  // @include shift-left(1);
+  // margin-right: 180px;
+  @include tablet {
+    @include size(12)
+  }
+  @include mobile {
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+  }
 
   &__item {
     display: flex;
-    width: 290px;
+    width: 33.33333%;
     height: 635px;
     overflow: hidden;
     border-right: 1px solid #fff;
     align-items: center;
     justify-content: center;
 
+    @include tablet {
+      height: 585px;
+    }
+    @include mobile {
+      width: 300px;
+      border-right: none;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
     &:nth-of-type(1) {
       .about-g__img {
-        transform: translate(80px,30px);
+        transform: translate(32%,30px);
+        @include mobile {
+          transform: none;
+        }
       }
     }
     &:nth-of-type(2) {
       .about-g__img {
         transform: translate(0,-80px);
+        @include mobile {
+          transform: none;
+        }
       }
     }
     &:nth-of-type(3) {
       border: none;
 
       .about-g__img {
-        transform: translate(-210px,80px);
+        transform: translate(-63%,80px);
+        @include mobile {
+          transform: none;
+        }
       }
     }
   }
   &__img {
-    width: 370px;
-    height: 370px;
+    width: 128%;
+    padding-bottom: 100%;
     border-radius: 50%;
+    position: relative;
+    overflow: hidden;
     object-fit: cover;
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 // eof about section
