@@ -263,7 +263,7 @@ body {
 
     &:nth-of-type(1) {
       .about-g__img {
-        transform: translate(32%,30px);
+        transform: translate(32%,0px);
         @include mobile {
           transform: none;
         }
@@ -271,7 +271,7 @@ body {
     }
     &:nth-of-type(2) {
       .about-g__img {
-        transform: translate(0,-80px);
+        transform: translate(0,0px);
         @include mobile {
           transform: none;
         }
@@ -281,7 +281,7 @@ body {
       border: none;
 
       .about-g__img {
-        transform: translate(-63%,80px);
+        transform: translate(-63%,0px);
         @include mobile {
           transform: none;
         }

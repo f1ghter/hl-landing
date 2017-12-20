@@ -124,7 +124,7 @@ $(document).ready(function(){
   });
 
 
-
+  var s = skrollr.init();
 
   // map init
   google.maps.event.addDomListener(window, 'load', init);
