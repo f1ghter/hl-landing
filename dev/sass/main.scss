@@ -15,8 +15,8 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 600px;
-  display: flex;
+  min-height: 600px
+;  display: flex;
   background-image: url(/img/bg-hero.jpg);
   background-position: center;
   background-size: cover;
@@ -143,6 +143,9 @@ body {
 
   @include tablet {
     height: auto;
+  }
+  @include mobile {
+    background-image: none;
   }
 
   &__bg {
@@ -296,7 +299,8 @@ body {
 .about-2 {
   position: relative;
   // height: 100vh;
-  padding-top: 150px;
+  // padding-top: 150px;
+  padding-top: 75px;
   padding-bottom: 150px;
   box-sizing: border-box;
   min-height: 800px;
@@ -316,10 +320,15 @@ body {
 .about-2-inner {
   @include row-flex();
   @include wrapper();
+
+  @include mobile {
+    // flex-direction: reverse-row; // TODO: fix
+  }
+
   .advantages {
     @include col();
     @include size(6);
-    @include mobile {
+    @include tablet {
       @include size(12);
     }
   }
@@ -327,6 +336,37 @@ body {
 .about-circles {
   @include col();
   @include size(5);
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  @include tablet {
+    @include size(12);
+    flex-direction: row;
+  }
+
+  &__item {
+    width: 50%;
+    background-color: red;
+    border: 1px solid blue;
+    border-radius: 50%;
+
+    &:after {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    &:nth-of-type(2) {
+      display: none;
+      @include tablet {
+        display: block;
+      }
+    }
+    @include tablet {
+      @include col();
+      @include size(4);
+    }
+  }
 }
 
 // eof about-2 section
@@ -335,6 +375,8 @@ body {
 
 // services section
 .services {
+  position: relative;
+  padding-bottom: 210px;
   @include wrapper();
   padding-top: 20px;
   position: relative;
@@ -350,6 +392,20 @@ body {
     pointer-events: none;
     @include mobile {
       font-size: 48px;
+    }
+  }
+  &__subtitle {
+    font-size: 36px;
+    color: #D6D4D0;
+    font-weight: 400;
+    position: absolute;
+    left: 73px;
+    top: 0;
+    transform: rotate(90deg);
+    transform-origin: 0 100%;
+
+    @include tablet {
+      display: none;
     }
   }
 
@@ -371,35 +427,42 @@ body {
       border-radius: 50%;
     }
   }
+  &-slider-controls {
+    display: flex;
+    width: 66%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+
+  }
 }
-.slick-list {
-  padding: 210px 50px !important;
+.services-description {
+  width: 33%;
+  text-align: center;
 }
-.slick-slide {
+
+// slider
+.services {
+  .slick-slide {
   width: 260px;
   transition: all 1s;
   position: relative;
   display: none;
   opacity: .5;
+  background-size: border-box;
+  outline: none;
+
   @include mobile {
     // opacity: 0;
     // width: 100vw !important;
     // width: 100% !important;
   }
-
-  background-size: border-box;
-  // border: 1px solid red;
-}
-.services-slider__item.slick-active {
-  display: block;
-  // border: 1px solid red;
-  // transform: scale(1.5);
-}
-.services-slider__item--prev {
+  }
+  .services-slider__item--prev {
   // background-color: green;
   transform: scale(1.5) translateX(-80px);
 
-  @include mobile {
+  @include tablet {
     transform: none;
   }
 }
@@ -407,7 +470,7 @@ body {
   // background-color: green;
   transform: scale(1.5) translateX(80px);
 
-  @include mobile {
+  @include tablet {
     transform: none;
   }
 }
@@ -415,12 +478,44 @@ body {
   opacity: 1;
   transform: scale(2.57) translateZ(10px);
   z-index: 5;
-
+  @include tablet {
+    transform: scale(1.8) translateZ(10px);
+  }
   @include mobile {
     transform: none;
   }
 
 }
+}
+
+.slick-dots li {
+  // margin: 0 10px;
+  padding: 10px;
+}
+.slick-dots li button {
+  width: 19px;
+  height: 1px;
+  padding: 0;
+  background-color: #fff;
+  transition: all .3s;
+  &:before {
+    display: none;
+  }
+}
+
+.slick-active {
+  button {
+    height: 3px !important;
+  }
+}
+
+
+.services-slider__item.slick-active {
+  display: block;
+  // border: 1px solid red;
+  // transform: scale(1.5);
+}
+
 // eof services section
 
 
@@ -428,15 +523,20 @@ body {
 .gallery {
   position: relative;
   &__title {
-    
+    margin-bottom: 24px;
     color: rgba(255, 255, 255, 0.03);
     font-size: 106px;
     text-align: right;
-    // padding-right: 30px;
     font-weight: 900;
     @include mobile {
       font-size: 48px;
       padding-left: 50px;
+    }
+  }
+  .slick-track {
+    height: 45vw;
+    @include mobile {
+      height: 350px;
     }
   }
 }
@@ -445,13 +545,25 @@ body {
   @include wrapper();
   align-items: stretch;
   height: 45vw;
+  overflow: hidden;
+  @include mobile {
+    height: 350px;
+  }
 
   &__item {
     @include col();
     @include size(4);
+    display: flex !important;
     box-sizing: border-box;
-    display: flex;
     align-items: center;
+    margin-left: 0.3%;
+    margin-right: 0.3%;
+    outline: none;
+    @include mobile {
+      width: 100wv !important;
+      margin-left: 0.03vw;
+      margin-right: 0.03vw;
+    }
 
     &--double {
       display: flex;
@@ -460,14 +572,19 @@ body {
       .gallery-slider__img-wrapper {
         height: 47%;
         width: 100%;
-
         
         &:nth-of-type(1) {
           transform: translateX(-5%);
+          @include mobile {
+            transform: none;
+          }
         }
         &:nth-of-type(2) {
           margin-top: auto;
         }
+      }
+      &:nth-of-type(2n) {
+        display: none;
       }
     }
   }
@@ -475,9 +592,15 @@ body {
     position: relative;
     height: 76%;
     width: 100%;
+    @include mobile {
+      height: 100%;
+    }
 
     &:hover .gallery-slider__info {
       opacity: 1;
+      @include mobile {
+        display: none;
+      }
     }
   }
   &__img {
@@ -501,6 +624,58 @@ body {
     // display: none;
   }
 }
+.gallery-slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mobile {
+    padding: 0 10px;
+    margin-top: 40px;
+    justify-content: space-between;
+  }
+  .arrow {
+    @include mobile {
+      width: 130px;
+    }
+    &--left {
+      @include tablet {
+        margin-right: 40px;
+      }
+      @include mobile {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  &__dots {
+    .slick-dots {
+      padding-top: 3px;
+      position: static;
+      @include tablet {
+        display: none;
+      }
+      li {
+        position: relative;
+        height: auto;
+
+        &.slick-active {
+          button {
+            margin-top: -1px; //TODO: check
+          }
+          
+        }
+
+        button {
+          position: absolute;
+          top: 50%;
+        }
+      }
+    }
+  }
+
+
+  
+}
 // eof gallery section
 
 
@@ -510,6 +685,7 @@ body {
   @include row-flex();
   @include wrapper();
   padding-top: 400px;
+  overflow: hidden;
 
   @include mobile {
     padding-top: 150px;
@@ -699,7 +875,7 @@ body {
   transform: translateY(70px);
 }
 .popup.popup--visible {
-    display: block;
+    display: block !important;
 
     .popup__dim {
       animation: fadeIn 1s;
@@ -769,3 +945,49 @@ body {
     }
   }
 // eof animations
+
+
+.arrows {
+  padding: 20px;
+}
+.arrow {
+  cursor: pointer;
+
+  &__inner {
+    position: relative;
+    width: 130px;
+    height: 1px;
+    margin: 10px 0;
+    background-color: #fff;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 15px;
+      height: 15px;
+      border: 1px solid white;
+      transform: rotate(-45deg);
+      transform-origin: 0 0;
+    }
+  }
+
+  &--left {
+    .arrow__inner:after {
+      border-bottom: none;
+      border-right: none;
+    }
+  }
+  &--right {
+    .arrow__inner:after {
+      border-bottom: none;
+      border-left: none;
+      left: auto;
+      right: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 0%;
+    }
+  }
+}

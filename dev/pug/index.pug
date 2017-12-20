@@ -58,7 +58,10 @@ html(lang="ru")
       .about-title
         img(src="/img/hammer-legend.svg", alt="")
       .about-2-inner
-        .about-circles circles
+        .about-circles
+          .about-circles__item
+          .about-circles__item
+          .about-circles__item
         .advantages.advantages--wide
             .advantages__item
               .advantages__heading Высокая пропускная способность клуба
@@ -75,7 +78,7 @@ html(lang="ru")
 
     section.services
       .services__title Услуги
-      p Тренировочные залы 
+       .services__subtitle Тренировочные залы
       .services-slider
         .services-slider__item
           img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
@@ -99,10 +102,18 @@ html(lang="ru")
           img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
         .services-slider__item
           img(src="/img/c-about-img-3.jpg", alt="").services-slider__img
+      .services-slider-controls
+        .arrow.arrow--left
+          .arrow__inner
+        .services-description  Большой выбор высокотехнологического оборудования поможет достичь Вашу цель. Каждое Ваше движение под контролем опытных тренеров. Они составляют уникальные программы занятий, учитывая состояние вашего здоровья, цели и опыт тренировок.
+        .arrow.arrow--right
+          .arrow__inner
+
 
     section.gallery
       .gallery__title Галлерея HAMMER legend
       .gallery-slider
+
         .gallery-slider__item.gallery-slider__item--double
             .gallery-slider__img-wrapper
               img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
@@ -110,10 +121,12 @@ html(lang="ru")
             .gallery-slider__img-wrapper
               img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
               .gallery-slider__info Зона блочных тренажеров.
+
         .gallery-slider__item
            .gallery-slider__img-wrapper
               img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
               .gallery-slider__info Зона блочных тренажеров.
+
         .gallery-slider__item.gallery-slider__item--double
             .gallery-slider__img-wrapper
               img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
@@ -121,6 +134,32 @@ html(lang="ru")
             .gallery-slider__img-wrapper
               img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
               .gallery-slider__info Зона блочных тренажеров.
+        .gallery-slider__item.gallery-slider__item--double
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+
+        .gallery-slider__item
+           .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+              
+        .gallery-slider__item.gallery-slider__item--double
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+            .gallery-slider__img-wrapper
+              img(src="/img/c-gallery-1.png", alt="").gallery-slider__img
+              .gallery-slider__info Зона блочных тренажеров.
+      .gallery-slider-controls
+        .arrow.arrow--left
+          .arrow__inner
+        .gallery-slider-controls__dots
+        .arrow.arrow--right
+          .arrow__inner
 
 
     footer.footer
@@ -139,6 +178,7 @@ html(lang="ru")
           a(href="https://uct.ua" target="_blank") Сделано в UCT
       .map-wrapper
         #map
+
     .popup
       .popup__dim
       .popup__body
