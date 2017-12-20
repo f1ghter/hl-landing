@@ -185,8 +185,12 @@ html(lang="ru")
         .popup__heading.popup-animate.popup-animate-1 Благодарим
         .popup__text.popup-animate.popup-animate-2 Укажите ваш номер для уточнения заказа с менеджером.
         form.popup-form(action="#")
-          input(type="text", placeholder="Ваше имя").popup-animate.popup-animate-3
-          input(type="text", placeholder="+7__").popup-animate.popup-animate-4
+          fieldset.popup-animate.popup-animate-3
+            input(type="text", placeholder="", required)
+            label.input-placeholder Ваше имя
+          fieldset.popup-animate.popup-animate-4
+            input(type="text", placeholder="", required)
+            label.input-placeholder Номер телефона
           button.btn.popup-animate.popup-animate-5 отправить
 
 
