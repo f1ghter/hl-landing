@@ -1,10 +1,10 @@
 $(document).ready(function(){
   $('.services-slider').slick({
     arrows: false,
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 5,
+    slidesToShow: 1,
     slidesToScroll: 1,
     centerMode: true,
     // autoplay: true,
@@ -12,7 +12,7 @@ $(document).ready(function(){
     draggable: false,
     autoplaySpeed: 4000,
     cssEase: 'ease-in-out',
-    respondTo: 'min',
+    // respondTo: 'min',
     // mobileFirst: true,
     // variableWidth: false,
     responsive: [

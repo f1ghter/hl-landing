@@ -59,9 +59,11 @@ html(lang="ru")
         img(src="/img/hammer-legend.svg", alt="")
       .about-2-inner
         .about-circles
-          .about-circles__item(data-anchor-target=".about-circles", data-bottom="transform: translateY(0%)",data-top="transform: translateY(100%)")
+          .about-circles__item(data-anchor-target=".about-circles__trigger", data-bottom="transform: translateY(0%)",data-top="transform: translateY(100%)")
           .about-circles__item
-          .about-circles__item(data-anchor-target=".about-circles", data-bottom="transform: translateY(0%); width:50%;height:50%",data-top="transform: translateY(-100%); width:55%;height:55%")
+          .about-circles__item(data-anchor-target=".about-circles__trigger", data-bottom="transform: translateY(0%); width:50%;height:50%",data-top="transform: translateY(-100%); width:55%;height:55%")
+            .about-circles__item-inner(data-anchor-target=".about-circles__trigger", data-bottom="transform: translateY(-100%)",data-top="transform: translateY(100%)")
+          .about-circles__trigger
         .advantages.advantages--wide
             .advantages__item
               .advantages__heading Высокая пропускная способность клуба
