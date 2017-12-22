@@ -5,6 +5,7 @@ var gulp = require('gulp'),
   browserSync = require('browser-sync'),
   rename = require('gulp-rename'),
   smartgrid = require('smart-grid'),
+  sourcemaps = require('gulp-sourcemaps'),
   uglify = require('gulp-uglify');
 
 //smartgrid options
@@ -46,11 +47,13 @@ var sgsettings = {
 
 gulp.task('sass', function(){
   return gulp.src(['dev/sass/*.scss'])
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['last 5 versions'],
       cascade: false
     }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('dev/css'))
     .pipe(browserSync.reload({stream: true}))
 });

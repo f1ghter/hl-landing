@@ -256,13 +256,11 @@ body {
   display: flex;
   @include col();
   @include size(6);
-  // @include shift-left(1);
   @include tablet {
     @include size(12)
   }
   @include mobile {
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
   }
 
@@ -275,12 +273,16 @@ body {
     align-items: center;
     justify-content: center;
 
+    
+
     @include tablet {
+      @include col();
+      @include size(4);
       height: 585px;
+      border-right: none;
     }
     @include mobile {
-      // width: 300px;
-      width: 100%;
+      @include size(12);
       border-right: none;
       height: auto;
       margin-bottom: 30px;
@@ -290,13 +292,16 @@ body {
     &:nth-of-type(1) {
       .about-g__img {
         transform: translate(32%,0px);
+        background-image: url(../img/c-about-img-1.png);
         @include mobile {
           transform: none;
         }
       }
     }
     &:nth-of-type(2) {
+      
       .about-g__img {
+        background-image: url(../img/c-about-img-2.png);
         transform: translate(0,0px);
         @include mobile {
           transform: none;
@@ -307,6 +312,7 @@ body {
       border: none;
 
       .about-g__img {
+        background-image: url(../img/c-about-img-3.jpg);
         transform: translate(-63%,0px);
         @include mobile {
           transform: none;
@@ -316,10 +322,12 @@ body {
   }
   &__img {
     width: 128%;
-    // padding-bottom: 100%;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     object-fit: cover;
     will-change: transform;
     @include tablet {
@@ -369,7 +377,7 @@ body {
   @include wrapper();
 
   @include tablet {
-    flex-direction: column-reverse; // TODO: fix
+    flex-direction: column-reverse;
   }
 
   .advantages {
@@ -438,7 +446,6 @@ body {
         width: 98.125% !important;
       }
     }
-    width: 31.45833%;
     @include tablet {
       @include col();
       @include size(4);
