@@ -109,6 +109,7 @@ body {
 }
 
 .btn {
+  position: relative;
   font-size: 24px;
   color: #000;
   line-height: 28px;
@@ -123,14 +124,39 @@ body {
   transition: all .3s;
   cursor: pointer;
   outline: none;
-  
-  &:hover {
+  overflow: hidden;
+  &:before, &:after {
+    content:"";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: all .4s;
+  }
+  &:before {
+    z-index: 2;
     background: linear-gradient(180deg, #FFC00D 0%, #FFC00D 100%);
+  }
+  &:after {
+    z-index: 2;
+    background: linear-gradient(180deg, #CF9902 0%, #FFC00D 100%);
+  }
+  &:hover:before {
+    opacity: 1;
+    // background: linear-gradient(180deg, #FFC00D 0%, #FFC00D 100%);
   }
 
   &:active {
-    background: linear-gradient(180deg, #CF9902 0%, #FFC00D 100%);
     transform: translateY(1px);
+    &:after {
+      opacity: 1;
+    }
+  }
+  &__inner {
+    position: relative;
+    z-index: 3;
   }
 }
 // eof hero section
@@ -486,6 +512,7 @@ body {
 
   &-slider {
     display: flex;
+    @include wrapper();
     width: 100%;
 
     &__item {
@@ -540,13 +567,16 @@ body {
 
 // slider
 .services {
+  .slick-list {
+    padding: 206px 0 !important
+  }
   .slick-slide {
-  width: 260px;
+  // width: 260px;
   transition: all 1s;
   position: relative;
-  display: none;
-  opacity: .5;
-  background-size: border-box;
+  // display: none;
+  // opacity: .5;
+  box-sizing: border-box;
   outline: none;
 
   @include mobile {
@@ -556,8 +586,10 @@ body {
   }
   }
   .services-slider__item--prev {
-  // background-color: green;
+  // background-color: red;
   transform: scale(1.5) translateX(-80px);
+  z-index: 4;
+  // margin-left: 25px;
 
   @include tablet {
     transform: none;
@@ -566,12 +598,14 @@ body {
 .services-slider__item--next {
   // background-color: green;
   transform: scale(1.5) translateX(80px);
+  z-index: 4;
+  // margin-right: 25px;
 
   @include tablet {
     transform: none;
   }
 }
-.slick-current {
+.slick-center {
   opacity: 1;
   transform: scale(2.57) translateZ(10px);
   z-index: 5;
@@ -608,7 +642,7 @@ body {
 
 
 .services-slider__item.slick-active {
-  display: block;
+  display: block !important;
   // border: 1px solid red;
   // transform: scale(1.5);
 }
@@ -909,7 +943,6 @@ body {
   width: 102%;
   height: 100%;
   @include tablet {
-    // width: 102%;
     padding-right: 3%;
   }
   @include mobile {

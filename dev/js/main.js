@@ -1,10 +1,11 @@
 $(document).ready(function(){
   $('.services-slider').slick({
     arrows: false,
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 1,
+    centerPadding: '60px',
+    slidesToShow: 5,
     slidesToScroll: 1,
     centerMode: true,
     // autoplay: true,
@@ -12,7 +13,7 @@ $(document).ready(function(){
     draggable: false,
     autoplaySpeed: 4000,
     cssEase: 'ease-in-out',
-    // respondTo: 'min',
+    respondTo: 'min',
     // mobileFirst: true,
     // variableWidth: false,
     responsive: [
@@ -20,11 +21,12 @@ $(document).ready(function(){
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
+          centerPadding: '60px',
           slidesToScroll: 1,
           infinite: true,
           dots: false,
           draggable: false,
-          centerMode: false
+          centerMode: true
         }
       },
       {
@@ -40,6 +42,10 @@ $(document).ready(function(){
       }
     ]
   });
+  $('.services-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    console.log(currentSlide);
+  });
+     
 
   $('.gallery-slider').slick({
     arrows: false,
@@ -74,11 +80,46 @@ $(document).ready(function(){
   });
   
   $('.services-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--prev");
-    // $(".services-slider__item.slick-current").addClass("services-slider__item--prev");
-    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--next");
-    // $(".services-slider__item.slick-current").next().next().addClass("services-slider__item--next");
-    // $(".services-slider__item.slick-current").removeClass("services-slider__item--next");
+    var decl = currentSlide - nextSlide;
+    if(decl == 1 || decl == (slick.slideCount-1)*(-1) ) {
+        console.log('is prev direction');
+
+        $(".services-slider__item").removeClass("services-slider__item--next");
+        $(".services-slider__item[data-slick-index="+ (currentSlide)+ "]").addClass("services-slider__item--next");
+
+        $(".services-slider__item").removeClass("services-slider__item--prev");
+        $(".services-slider__item[data-slick-index="+ (currentSlide-2)+ "]").addClass("services-slider__item--prev");
+
+        if(nextSlide>currentSlide) {
+          $(".services-slider__item[data-slick-index="+ (nextSlide+1)+ "]").addClass("services-slider__item--next");
+          $(".services-slider__item[data-slick-index="+ (nextSlide-1)+ "]").addClass("services-slider__item--prev");
+        }
+
+      } else {
+        console.log('is next direction');
+        $(".services-slider__item").removeClass("services-slider__item--next");
+        $(".services-slider__item[data-slick-index="+ (currentSlide+2)+ "]").addClass("services-slider__item--next");
+
+        $(".services-slider__item").removeClass("services-slider__item--prev");
+        $(".services-slider__item[data-slick-index="+ (currentSlide)+ "]").addClass("services-slider__item--prev");
+
+        if(nextSlide<currentSlide) {
+          $(".services-slider__item[data-slick-index="+ (nextSlide+1)+ "]").addClass("services-slider__item--next");
+          $(".services-slider__item[data-slick-index="+ (nextSlide-1)+ "]").addClass("services-slider__item--prev");
+        }
+
+
+      }
+
+
+    // $(".services-slider__item[data-slick-index="+ nextSlide+ "]").css("opacity",".1");
+
+    // $(".services-slider__item.slick-center").siblings().removeClass("services-slider__item--prev");
+    // $(".services-slider__item.slick-center").addClass("services-slider__item--prev");
+
+    // $(".services-slider__item.slick-center").siblings().removeClass("services-slider__item--next");
+    // $(".services-slider__item.slick-center").next().next().addClass("services-slider__item--next");
+    // $(".services-slider__item.slick-center").removeClass("services-slider__item--next");
   });
 
 // popup
@@ -97,21 +138,21 @@ $(document).ready(function(){
 
   $('.services-slider-controls .arrow--left').click(function(){
     $(".services-slider").slick('slickPrev');
-    $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--prev");
-    $(".services-slider__item.slick-current").prev().addClass("services-slider__item--prev");
+    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--prev");
+    // $(".services-slider__item.slick-current").prev().addClass("services-slider__item--prev");
 
-    $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--next");
-    $(".services-slider__item.slick-current").next().addClass("services-slider__item--next");
+    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--next");
+    // $(".services-slider__item.slick-current").next().addClass("services-slider__item--next");
   });
 
   $('.services-slider-controls .arrow--right').click(function(){
     $(".services-slider").slick('slickNext');
 
-    $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--prev");
-    $(".services-slider__item.slick-current").prev().addClass("services-slider__item--prev");
+    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--prev");
+    // $(".services-slider__item.slick-current").prev().addClass("services-slider__item--prev");
 
-    $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--next");
-    $(".services-slider__item.slick-current").next().addClass("services-slider__item--next");
+    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--next");
+    // $(".services-slider__item.slick-current").next().addClass("services-slider__item--next");
   });
 
 
@@ -129,7 +170,6 @@ $(document).ready(function(){
   // map init
   google.maps.event.addDomListener(window, 'load', init);
     function init() {
-      // https://developers.google.com/maps/documentation/javascript/reference#MapOptions
       var mapOptions = {
         zoom: 15,
         disableDefaultUI: true,
