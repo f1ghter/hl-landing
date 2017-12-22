@@ -107,19 +107,7 @@ $(document).ready(function(){
           $(".services-slider__item[data-slick-index="+ (nextSlide+1)+ "]").addClass("services-slider__item--next");
           $(".services-slider__item[data-slick-index="+ (nextSlide-1)+ "]").addClass("services-slider__item--prev");
         }
-
-
       }
-
-
-    // $(".services-slider__item[data-slick-index="+ nextSlide+ "]").css("opacity",".1");
-
-    // $(".services-slider__item.slick-center").siblings().removeClass("services-slider__item--prev");
-    // $(".services-slider__item.slick-center").addClass("services-slider__item--prev");
-
-    // $(".services-slider__item.slick-center").siblings().removeClass("services-slider__item--next");
-    // $(".services-slider__item.slick-center").next().next().addClass("services-slider__item--next");
-    // $(".services-slider__item.slick-center").removeClass("services-slider__item--next");
   });
 
 // popup
@@ -138,21 +126,10 @@ $(document).ready(function(){
 
   $('.services-slider-controls .arrow--left').click(function(){
     $(".services-slider").slick('slickPrev');
-    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--prev");
-    // $(".services-slider__item.slick-current").prev().addClass("services-slider__item--prev");
-
-    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--next");
-    // $(".services-slider__item.slick-current").next().addClass("services-slider__item--next");
   });
 
   $('.services-slider-controls .arrow--right').click(function(){
     $(".services-slider").slick('slickNext');
-
-    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--prev");
-    // $(".services-slider__item.slick-current").prev().addClass("services-slider__item--prev");
-
-    // $(".services-slider__item.slick-current").siblings().removeClass("services-slider__item--next");
-    // $(".services-slider__item.slick-current").next().addClass("services-slider__item--next");
   });
 
 
