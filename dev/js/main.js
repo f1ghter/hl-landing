@@ -433,6 +433,10 @@ $(document).ready(function(){
         title: 'Hammer legend'
       });
     } // eof map init
+    objectFitImages();
+    // $(".gallery-slider__img-wrapper").swipebox();
+    // $(".gallery-slider__img-wrapper").SmartPhoto();
+    $('.gallery-slider__img-wrapper').simpleLightbox();
 }); //eof doc.ready
 
 

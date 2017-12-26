@@ -420,12 +420,14 @@ body {
     overflow: hidden;
     will-change: transform;
     &:nth-of-type(1) {
+      // box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.25);
       background-image: url(../img/c-about2-img-1.png);
     }
     &:nth-of-type(2) {
       background-image: url(../img/c-about2-img-2.jpg);
     }
     &:nth-of-type(3) {
+
       background-image: url(../img/c-about2-img-3.png);
       &:after {
         padding-top: 0;
@@ -551,9 +553,9 @@ body {
       // width: 10vw;
       text-align: center;
       border-radius: 50%;
-      box-shadow: 0px 0px 14px 14px rgba(0, 0, 0, 0.25);
+      // box-shadow: 0px 0px 14px 14px rgba(0, 0, 0, 0.25);
+      box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.25);
       box-sizing: border-box;
-      // border: 1px solid blue;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -569,6 +571,23 @@ body {
         display: block;
         padding-top: 100%;
 
+      }
+    }
+    &__overlay {
+      width: 100%;
+      height: 100%;
+      background-color: #171414;
+      opacity: .83;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 10;
+      pointer-events: none;
+      @include tablet {
+        // display: none;
+      }
+      @include mobile {
+        display: none;
       }
     }
     &__desc {
@@ -672,7 +691,7 @@ body {
   .services-slider__item--prev {
   // background-color: red;
   transform: scale(1.3) translateX(-80px) translateZ(1px);
-  z-index: 4;
+  z-index: 14;
   // margin-left: 25px;
 
   @include tablet {
@@ -682,7 +701,7 @@ body {
 .services-slider__item--next {
   // background-color: green;
   transform: scale(1.3) translateX(80px) translateZ(1px);
-  z-index: 4;
+  z-index: 14;
   // margin-right: 25px;
 
   @include tablet {
@@ -696,13 +715,16 @@ body {
   .services-slider__desc {
     display: block;
   }
+  .services-slider__overlay {
+    animation: over 1s linear;
+    animation-fill-mode: forwards;
+  }
   @include tablet {
     transform: scale(1.8) translateZ(10px);
   }
   @include mobile {
     transform: none;
   }
-
 }
 }
 
@@ -798,6 +820,8 @@ body {
       margin-left: 0.3%;
       margin-right: 0.3%;
       outline: none;
+      cursor: pointer;
+
       @include mobile {
         width: 100wv !important;
         margin-left: 0.03vw;
@@ -831,6 +855,14 @@ body {
       position: relative;
       height: 76%;
       width: 100%;
+      overflow: hidden;
+      outline: none;
+      &:hover .gallery-slider__img {
+        transform: scale(1.1);
+        @include tablet {
+          transform: none;
+        }
+      }
       @include mobile {
         height: 100%;
       }
@@ -847,6 +879,9 @@ body {
       height: 100%;
       width: 100%;
       object-fit: cover;
+      font-family: "object-fit: cover"; // ie/edge polyfill
+      will-change: transform;
+      transition: all .3s;
     }
     &__info {
       width: 100%;
@@ -854,12 +889,14 @@ body {
       padding-bottom: 28px;
       position: absolute;
       bottom: 0;
+      color: #fff;
       text-align: center;
       background-color: rgba(32, 33, 38, .7);
       font-size: 24px;
       cursor: default;
       opacity: 0;
       transition: all .3s;
+      pointer-events: none;
     }
   }
   .gallery-slider-controls {
@@ -1051,18 +1088,45 @@ body {
       border-radius: 50%;
       background-repeat: no-repeat;
       background-position: center;
+      transition: all .3s;
+      overflow: hidden;
 
       &:last-of-type {
         margin-right: 0;
       }
       &--fb {
         background-image: url(../img/i-fb.svg);
+        &:hover {
+          background-color: #3B5998;
+        }
       }
       &--g {
         background-image: url(../img/i-g.svg);
+        &:hover {
+          background-color: #D9534F;
+        }
       }
       &--i {
+        position: relative;
         background-image: url(../img/i-i.svg);
+        &:hover {
+          &:after { // instagram background gradient
+            opacity: 1;
+          }
+        }
+        &:after { // instagram background gradient
+          opacity: 0;
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-image: linear-gradient(to top, #F9ED32, #EE2A7B);
+          z-index: -1;
+          transition: all .3s;
+        }
+        
       }
     }
   }
@@ -1213,7 +1277,7 @@ input:valid + .input-placeholder {
     }
 
     .popup-animate {
-      animation: reveal 1s;
+      animation: reveal 1.3s;
       animation-fill-mode: forwards;
     }
     .popup-animate-1 {
@@ -1248,6 +1312,10 @@ input:valid + .input-placeholder {
       transform: translateY(70px);
       opacity: 0;
     }
+    50% {
+      transform: translateY(-15px);
+      opacity: .4;
+    }
     100% {
       transform: translateY(0px);
       opacity: 1;
@@ -1271,6 +1339,23 @@ input:valid + .input-placeholder {
       opacity: 1;
     }
   }
+  @keyframes over {
+    0% {
+      opacity: .83;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes insta {
+    0% {
+      background-image: url(../img/i-i.svg), linear-gradient(to top, #58595C, #58595C);
+    }
+    100% {
+      background-image: url(../img/i-i.svg), linear-gradient(to top, #F9ED32, #EE2A7B);
+    }
+  }
 // eof animations
 
 
@@ -1279,6 +1364,15 @@ input:valid + .input-placeholder {
 }
 .arrow {
   cursor: pointer;
+  transition: all .3s;
+  will-change: transform;
+
+  &:hover {
+    transform: scale(1.2);
+    @include tablet {
+      transform: none;
+    }
+  }
 
   &__inner {
     position: relative;
@@ -1302,12 +1396,17 @@ input:valid + .input-placeholder {
   }
 
   &--left {
+    transform-origin: 100% 50%;
+    &:hover {
+      // transform: scale(1.2);
+    }
     .arrow__inner:after {
       border-bottom: none;
       border-right: none;
     }
   }
   &--right {
+    transform-origin: 0% 50%;
     .arrow__inner:after {
       border-bottom: none;
       border-left: none;
@@ -1318,3 +1417,15 @@ input:valid + .input-placeholder {
     }
   }
 }
+
+// lightbox overlay
+  .sl-overlay {
+    background-color: #000;
+  }
+  .sl-counter {
+    color: #fff !important;
+  }
+  .sl-wrapper .sl-close, .sl-wrapper .sl-counter, .sl-wrapper .sl-navigation button {
+    color: #fff !important;
+  }
+// eof lightbox overlay
