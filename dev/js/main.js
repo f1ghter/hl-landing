@@ -153,6 +153,9 @@ $(document).ready(function(){
 
 
   var s = skrollr.init();
+  if (s.isMobile()) {
+    s.destroy();
+  }
 
   // map init
   google.maps.event.addDomListener(window, 'load', init);
@@ -434,8 +437,6 @@ $(document).ready(function(){
       });
     } // eof map init
     objectFitImages();
-    // $(".gallery-slider__img-wrapper").swipebox();
-    // $(".gallery-slider__img-wrapper").SmartPhoto();
     $('.gallery-slider__img-wrapper').simpleLightbox();
 }); //eof doc.ready
 

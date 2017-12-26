@@ -9,7 +9,6 @@ body {
   background-color: #202126;
   box-sizing: border-box;
   overflow-x: hidden;
-  height: auto !important;
 }
 * {
   -webkit-tap-highlight-color: transparent;
@@ -1397,9 +1396,6 @@ input:valid + .input-placeholder {
 
   &--left {
     transform-origin: 100% 50%;
-    &:hover {
-      // transform: scale(1.2);
-    }
     .arrow__inner:after {
       border-bottom: none;
       border-right: none;
@@ -1421,9 +1417,6 @@ input:valid + .input-placeholder {
 // lightbox overlay
   .sl-overlay {
     background-color: #000;
-  }
-  .sl-counter {
-    color: #fff !important;
   }
   .sl-wrapper .sl-close, .sl-wrapper .sl-counter, .sl-wrapper .sl-navigation button {
     color: #fff !important;
