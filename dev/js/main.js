@@ -43,16 +43,8 @@ $(document).ready(function(){
     ]
   });
   
-  // $('.services-slider').on('init', function(event, slick, currentSlide, nextSlide){
-  //   console.log("init");
-  // });
-  // $('.services-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-  //   console.log(currentSlide);
-  // });
   $('.services-slider').on('afterChange', function(event, slick, currentSlide, nextSlide){
     $(".services-description").text($(".services .slick-current .services-slider__text").text());
-    // $(".services-heading").text($(".services .slick-current .services-slider__desc").text());
-
   });
 
   $('.gallery-slider').slick({
@@ -92,7 +84,7 @@ $(document).ready(function(){
   $('.services-slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
     var decl = currentSlide - nextSlide;
     if(decl == 1 || decl == (slick.slideCount-1)*(-1) ) {
-        console.log('is prev direction');
+        // console.log('prev direction');
 
         $(".services-slider__item").removeClass("services-slider__item--next");
         $(".services-slider__item[data-slick-index="+ (currentSlide)+ "]").addClass("services-slider__item--next");
@@ -106,7 +98,7 @@ $(document).ready(function(){
         }
 
       } else {
-        console.log('is next direction');
+        // console.log('next direction');
         $(".services-slider__item").removeClass("services-slider__item--next");
         $(".services-slider__item[data-slick-index="+ (currentSlide+2)+ "]").addClass("services-slider__item--next");
 
@@ -153,7 +145,8 @@ $(document).ready(function(){
 
 
   var s = skrollr.init();
-  if (s.isMobile()) {
+  // disable parallax on mobile
+  if (s.isMobile()) { 
     s.destroy();
   }
 
@@ -438,6 +431,14 @@ $(document).ready(function(){
     } // eof map init
     objectFitImages();
     $('.gallery-slider__img-wrapper').simpleLightbox();
+
+    // add "double" class to gallery item with two images
+    $(".gallery-slider__item").each(function(){
+      if($(this).children().length==2) {
+        $(this).addClass("gallery-slider__item--double");
+      }
+    });
+    jQuery.scrollSpeed(100, 1200);
 }); //eof doc.ready
 
 
