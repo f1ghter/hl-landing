@@ -438,7 +438,9 @@ $(document).ready(function(){
         $(this).addClass("gallery-slider__item--double");
       }
     });
-    jQuery.scrollSpeed(100, 1200);
+    
+    // page smooth scroll
+    jQuery.scrollSpeed(100, 1200); // (step, time)
 }); //eof doc.ready
 
 
