@@ -325,6 +325,23 @@ body {
         padding-top: 100%;
       }
     }
+    &__inner {
+      display: none;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+      line-height: 16px;
+      box-sizing: border-box;
+      padding: 30px;
+      text-align: center;
+      background-color: rgba(32, 33, 38, 0.5);
+
+      @include mobile {
+        display: block;
+      }
+    }
     &__text {
       position: absolute;
       width: 80%;
@@ -625,9 +642,17 @@ body {
     }
   }
 }
-.services-heading {
+.services__heading {
+  display: none;
   font-size: 24px;
-  line-height: 28;
+  line-height: 28px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+
+  @include mobile {
+    display: block;
+  }
 }
 .services-description {
   width: 33%;
@@ -637,7 +662,9 @@ body {
     flex-grow: 1;
   }
   @include mobile {
-    width: 80%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 0 10%;
     flex-grow: 0;
     margin-top: 10px;
     order: 1;
