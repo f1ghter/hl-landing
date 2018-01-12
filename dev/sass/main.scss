@@ -15,7 +15,12 @@ body {
 * {
   -webkit-tap-highlight-color: transparent;
 }
-
+.hd {
+  display: none;
+  @include mobile {
+    display: block;
+  }
+}
 // hero section
   .hero {
     position: relative;
