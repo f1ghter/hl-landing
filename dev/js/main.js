@@ -178,7 +178,7 @@ $(document).ready(function(){
       var mapOptions = {
         zoom: 15,
         disableDefaultUI: true,
-        center: new google.maps.LatLng(51.114926, 71.428111),
+        center: new google.maps.LatLng(51.110033, 71.426012),
         styles: [
     {
         "featureType": "all",
@@ -455,7 +455,7 @@ $(document).ready(function(){
       var mapElement = document.getElementById('map');
       var map = new google.maps.Map(mapElement, mapOptions);
       var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(51.114926, 71.428111),
+        position: new google.maps.LatLng(51.110033, 71.426012),
         map: map,
         title: 'Hammer legend'
       });
