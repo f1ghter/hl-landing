@@ -467,6 +467,10 @@ $(document).ready(function(){
     
     // page smooth scroll
     //jQuery.scrollSpeed(100, 1200); // (step, time)
+    $(".popup-form").submit(function(){
+        console.log("form submit");
+        // dataLayer.push({'event': 'eventName'});
+    });
 }); //eof doc.ready
 
 
